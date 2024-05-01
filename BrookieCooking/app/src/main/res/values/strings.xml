@@ -5,4 +5,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="privacy_policy_url">https://anshumadhikarmi.com/</string>
     <string name="abt_dev">https://anshumadhikarmi.com/</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

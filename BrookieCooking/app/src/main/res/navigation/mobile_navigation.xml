@@ -9,7 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="com.example.brookiecooking.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_recipe"
+            app:destination="@id/recipe" />
+        <action
+            android:id="@+id/action_navigation_home_to_category"
+            app:destination="@id/category" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +29,22 @@
         android:name="com.example.brookiecooking.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/recipe"
+        android:name="com.example.brookiecooking.recipe"
+        android:label="fragment_recipe"
+        tools:layout="@layout/fragment_recipe" >
+        <action
+            android:id="@+id/action_recipe_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/category"
+        android:name="com.example.brookiecooking.category"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_category_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>
