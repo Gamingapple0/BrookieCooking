@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "recipe")
-public class User {
+public class Recipe {
 
     @PrimaryKey(autoGenerate = true)
     public int uid;
@@ -25,7 +25,7 @@ public class User {
     @NonNull
     public String category;
 
-    public User(String img, String tittle, String des, String ing, String category) {
+    public Recipe(String img, String tittle, String des, String ing, String category) {
         this.img = img;
         this.tittle = tittle;
         this.des = des;

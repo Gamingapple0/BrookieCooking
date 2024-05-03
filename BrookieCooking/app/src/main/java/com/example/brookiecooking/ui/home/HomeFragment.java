@@ -2,21 +2,12 @@ package com.example.brookiecooking.ui.home;
 
 import static com.example.brookiecooking.MainActivity.navController;
 
-import android.app.Dialog;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -29,20 +20,19 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.example.brookiecooking.Adapter.AdapterPopular;
 import com.example.brookiecooking.R;
 import com.example.brookiecooking.RoomDB.AppDatabase;
-import com.example.brookiecooking.RoomDB.User;
-import com.example.brookiecooking.RoomDB.UserDao;
+import com.example.brookiecooking.RoomDB.Recipe;
+import com.example.brookiecooking.RoomDB.RecipeDao;
 import com.example.brookiecooking.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     ImageView salad, main, drinks, dessert, menu;
     RecyclerView rcview_home;
-    List<User> dataPopular = new ArrayList<>();
+    List<Recipe> dataPopular = new ArrayList<>();
     LottieAnimationView lottie;
     EditText editText;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,6 +54,8 @@ public class HomeFragment extends Fragment {
 
         rcview_home.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
+        setPopularList();
+
         salad.setOnClickListener(v -> start("Salad","Salad"));
         main.setOnClickListener(v -> start("Dish", "Main dish"));
         drinks.setOnClickListener(v -> start("Drinks", "Drinks"));
@@ -81,13 +73,14 @@ public class HomeFragment extends Fragment {
 
         // Get database
         AppDatabase db = Room.databaseBuilder(getContext(),
-                        AppDatabase.class, "db_name").allowMainThreadQueries()
-                .createFromAsset("database/recipe.db")
+                        AppDatabase.class, "db_name6").allowMainThreadQueries()
+                /*.createFromAsset("database/recipe.db")*/
+                .fallbackToDestructiveMigration()
                 .build();
-        UserDao userDao = db.userDao();
+        RecipeDao recipeDao = db.userDao();
 
         // Get all recipes from database
-        List<User> recipes = userDao.getAll();
+        List<Recipe> recipes = recipeDao.getAll();
 
         // Filter Popular category from all recipes
         for(int i = 0; i<recipes.size(); i++){

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.brookiecooking.Adapter.Adaptar;
-import com.example.brookiecooking.RoomDB.AppDatabase;
-import com.example.brookiecooking.RoomDB.User;
-import com.example.brookiecooking.RoomDB.UserDao;
+import com.example.brookiecooking.RoomDB.Recipe;
 import com.example.brookiecooking.databinding.FragmentCategoryBinding;
 
 /**
@@ -37,7 +33,7 @@ public class category extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     RecyclerView recview;
     boolean connected = false;
-    List<User> dataFinal = new ArrayList<>();
+    List<Recipe> dataFinal = new ArrayList<>();
     ImageView back;
     TextView tittle;
     private FragmentCategoryBinding binding;
@@ -96,11 +92,11 @@ public class category extends Fragment {
         tittle.setText(getArguments().getString("tittle"));
 
         // Get database
-        AppDatabase db = Room.databaseBuilder(requireContext(),
-                        AppDatabase.class, "db_name").allowMainThreadQueries()
+        /*AppDatabase db = Room.databaseBuilder(requireContext(),
+                        AppDatabase.class, "db_name3").allowMainThreadQueries()
                 .createFromAsset("database/recipe.db")
-                .build();
-        UserDao userDao = db.userDao();
+                .build();*/
+/*        UserDao userDao = db.userDao();
 
         // Get all recipes from database
         List<User> recipes = userDao.getAll();
@@ -114,7 +110,7 @@ public class category extends Fragment {
 
         // Set category list to adapter
         Adaptar adapter = new Adaptar(dataFinal, requireContext());
-        recview.setAdapter(adapter);
+        recview.setAdapter(adapter)*/;
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,7 +1,6 @@
 package com.example.brookiecooking.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,7 @@ import com.bumptech.glide.Glide;
 /*import com.tiodev.vegtummy.R;
 import com.tiodev.vegtummy.RecipeActivity;*/
 import com.example.brookiecooking.R;
-import com.example.brookiecooking.RoomDB.User;
+import com.example.brookiecooking.RoomDB.Recipe;
 
 
 import java.util.List;
@@ -28,7 +27,7 @@ public class Adaptar extends  RecyclerView.Adapter<Adaptar.myviewHolder>{
 //    List<ResModel> data;
 //    Context context;
 
-    List<User> data;
+    List<Recipe> data;
     Context context;
 //    ArrayList<String> data = new ArrayList<>();
 //
@@ -36,7 +35,7 @@ public class Adaptar extends  RecyclerView.Adapter<Adaptar.myviewHolder>{
 //        this.data = data;
 //    }
 
-    public Adaptar(List<User> data , Context context) {
+    public Adaptar(List<Recipe> data , Context context) {
 
         this.data = data;
         this.context = context;
@@ -53,7 +52,7 @@ public class Adaptar extends  RecyclerView.Adapter<Adaptar.myviewHolder>{
     @Override
     public void onBindViewHolder(@NonNull myviewHolder holder, int position) {
 
-        final User temp = data.get(position);
+        final Recipe temp = data.get(position);
 
         holder.txt1.setText(data.get(position).getTittle());
         Glide.with(holder.txt1.getContext()).load(data.get(position).getImg()).into(holder.img);

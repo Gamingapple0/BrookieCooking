@@ -2,6 +2,8 @@ package com.example.brookiecooking;
 
 import static androidx.core.content.ContextCompat.getColor;
 
+import static com.example.brookiecooking.MainActivity.navController;
+
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
@@ -35,7 +37,7 @@ public class recipe extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    ImageView img, backBtn, overlay, scroll, zoomImage;
+    ImageView img, backBtn, overlay, scroll, back2;
     TextView txt, ing, time, steps;
     String [] ingList;
     Button stepBtn, ing_btn;
@@ -97,26 +99,31 @@ public class recipe extends Fragment {
         overlay = binding.imageGradient;
         scroll = binding.scroll;
 
-        Glide.with(requireContext()).load(getArguments().getString("img")).into(img);
-        // Set recipe title
-        txt.setText(getArguments().getString("tittle"));
+        if (getArguments() != null){
+            Glide.with(requireContext()).load(getArguments().getString("img")).into(img);
+            // Set recipe title
+            txt.setText(getArguments().getString("tittle"));
 
-        // Set recipe ingredients
-        ingList = getArguments().getString("ing").split("\n");
-        // Set time
-        time.setText(ingList[0]);
+            // Set recipe ingredients
+            ingList = getArguments().getString("ing").split("\n");
+            // Set time
+            time.setText(ingList[0]);
 
-        for (int i = 1; i<ingList.length; i++){
-            ing.setText(ing.getText()+"\uD83D\uDFE2  "+ingList[i]+"\n");
+            for (int i = 1; i<ingList.length; i++){
+                ing.setText(ing.getText()+"\uD83D\uDFE2  "+ingList[i]+"\n");
             /*if(ingList[i].startsWith(" ")){
                 ing.setText(ing.getText()+"\uD83D\uDFE2  "+ingList[i].trim().replaceAll("\\s{2,}", " ")+"\n");
             }else{
 
             }*/
 
+            }
+
+            steps.setText(getArguments().getString("des"));
+
         }
 
-        steps.setText(getArguments().getString("des"));
+
         // steps.setText(Html.fromHtml(getIntent().getStringExtra("des")));
 
         stepBtn.setBackground(null);
@@ -125,7 +132,8 @@ public class recipe extends Fragment {
             stepBtn.setBackgroundResource(R.drawable.btn_ing);
             stepBtn.setTextColor(getColor(requireContext(), R.color.white));
             ing_btn.setBackground(null);
-            stepBtn.setTextColor(getColor(requireContext(), R.color.black));
+            stepBtn.setTextColor(getColor(requireContext(), R.color.white));
+            ing_btn.setTextColor(getColor(requireContext(), R.color.black));
 
 
             scrollView.setVisibility(View.GONE);
@@ -147,6 +155,18 @@ public class recipe extends Fragment {
             scrollView.setVisibility(View.VISIBLE);
             scrollView_step.setVisibility(View.GONE);
 
+        });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!navController.popBackStack()) {
+                    requireActivity().onBackPressed();
+                }
+                if (!navController.popBackStack()) {
+                    requireActivity().onBackPressed();
+                }
+            }
         });
 
 

@@ -6,10 +6,10 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface UserDao {
+public interface RecipeDao {
 
-    @Query("SELECT * FROM recipe")
-    List<User> getAll();
+    @Query("SELECT * FROM Recipe")
+    List<Recipe> getAll();
 
 }
 
