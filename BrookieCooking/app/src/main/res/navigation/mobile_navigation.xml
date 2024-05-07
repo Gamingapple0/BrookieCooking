@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/login">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_navigation_home_to_category"
             app:destination="@id/category" />
+        <action
+            android:id="@+id/action_navigation_home_to_login"
+            app:destination="@id/login" />
     </fragment>
 
     <fragment
@@ -46,5 +49,41 @@
         <action
             android:id="@+id/action_category_to_navigation_home"
             app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.brookiecooking.login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_login_to_signup"
+            app:destination="@id/signup" />
+    </fragment>
+    <fragment
+        android:id="@+id/signup"
+        android:name="com.example.brookiecooking.signup"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signup_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_signup_to_allergies"
+            app:destination="@id/allergies" />
+    </fragment>
+    <fragment
+        android:id="@+id/allergies"
+        android:name="com.example.brookiecooking.allergies"
+        android:label="fragment_allergies"
+        tools:layout="@layout/fragment_allergies" >
+        <action
+            android:id="@+id/action_allergies_to_signup"
+            app:destination="@id/signup" />
+        <action
+            android:id="@+id/action_allergies_to_login"
+            app:destination="@id/login" />
     </fragment>
 </navigation>

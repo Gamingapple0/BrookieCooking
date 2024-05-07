@@ -56,10 +56,10 @@ public class HomeFragment extends Fragment {
 
         setPopularList();
 
-        salad.setOnClickListener(v -> start("Salad","Salad"));
-        main.setOnClickListener(v -> start("Dish", "Main dish"));
-        drinks.setOnClickListener(v -> start("Drinks", "Drinks"));
-        dessert.setOnClickListener(v -> start("Desserts", "Dessert"));
+        salad.setOnClickListener(v -> start("Salad","Nepal"));
+        main.setOnClickListener(v -> start("Dish", "China"));
+        drinks.setOnClickListener(v -> start("Drinks", "India"));
+        dessert.setOnClickListener(v -> start("Desserts", "Italy"));
 
 
         // Menu button

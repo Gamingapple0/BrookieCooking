@@ -15,6 +15,7 @@
         android:hapticFeedbackEnabled="true"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pizza_sample" />
@@ -164,7 +165,7 @@
                 android:layout_gravity="center_horizontal"
                 android:paddingTop="12dp"
                 android:paddingBottom="50dp"
-                android:text="Test txt is here"
+                android:text=""
                 android:textColor="#000000"
                 android:textSize="15sp"
                 app:emojiCompatEnabled="true"
@@ -210,5 +211,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/addToGroceries"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btn_ing"
+        android:fontFamily="@font/poppins_medium"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="$ ADD TO LIST"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

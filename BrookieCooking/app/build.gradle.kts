@@ -48,6 +48,10 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1-Beta")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1-Beta")
+    implementation("com.google.code.gson:gson:2.8.8")
+    implementation("com.android.volley:volley:1.2.1")
+
+
 
 // Lottie (Animation)
     val lottieVersion = "5.2.0"

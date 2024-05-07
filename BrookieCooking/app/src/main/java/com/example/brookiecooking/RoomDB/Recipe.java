@@ -1,11 +1,14 @@
 package com.example.brookiecooking.RoomDB;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "recipe")
-public class Recipe {
+public class Recipe implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     public int uid;
@@ -32,6 +35,16 @@ public class Recipe {
         this.ing = ing;
         this.category = category;
     }
+
+    protected Recipe(Parcel in) {
+        uid = in.readInt();
+        img = in.readString();
+        tittle = in.readString();
+        des = in.readString();
+        ing = in.readString();
+        category = in.readString();
+    }
+
 
     public String getImg() {
         return img;
@@ -72,5 +85,33 @@ public class Recipe {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
+        @Override
+        public Recipe createFromParcel(Parcel in) {
+            return new Recipe(in);
+        }
+
+        @Override
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(uid);
+        dest.writeString(img);
+        dest.writeString(tittle);
+        dest.writeString(des);
+        dest.writeString(ing);
+        dest.writeString(category);
+    }
+
 }
 
