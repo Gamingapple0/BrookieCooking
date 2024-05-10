@@ -1,5 +1,7 @@
 package com.example.brookiecooking.Adapter;
 
+import static android.text.TextUtils.split;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +22,7 @@ import com.example.brookiecooking.R;
 import com.example.brookiecooking.RoomDB.Recipe;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adaptar extends  RecyclerView.Adapter<Adaptar.myviewHolder>{
@@ -29,6 +32,8 @@ public class Adaptar extends  RecyclerView.Adapter<Adaptar.myviewHolder>{
 
     List<Recipe> data;
     Context context;
+    String [] ingList;
+
 //    ArrayList<String> data = new ArrayList<>();
 //
 //    public Adaptar(ArrayList<String> data) {
@@ -56,6 +61,23 @@ public class Adaptar extends  RecyclerView.Adapter<Adaptar.myviewHolder>{
 
         holder.txt1.setText(data.get(position).getTittle());
         Glide.with(holder.txt1.getContext()).load(data.get(position).getImg()).into(holder.img);
+
+        ingList = temp.getIng().split("\n");
+
+//            steps.setText(getArguments().getString("des"));
+        List<String> filteredList = new ArrayList<>();
+        for (String ingredient : ingList) {
+            if (!ingredient.isEmpty() && ingredient != null) {
+                filteredList.add(ingredient);
+            }
+        }
+
+
+
+
+
+        holder.time.setText(filteredList.get(1));
+
 
         holder.img2.setOnClickListener(v -> {
 
@@ -86,13 +108,15 @@ public class Adaptar extends  RecyclerView.Adapter<Adaptar.myviewHolder>{
 
     static class myviewHolder extends RecyclerView.ViewHolder{
         ImageView img , img2;
-        TextView txt1;
+        TextView txt1, time;
+
 
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.img);
+            img = itemView.findViewById(R.id.imgNepal);
             img2 = itemView.findViewById(R.id.card_btn);
             txt1 = itemView.findViewById(R.id.txt1);
+            time = itemView.findViewById(R.id.time);
         }
     }
 

@@ -217,13 +217,23 @@
         android:layout_width="150dp"
         android:layout_height="42dp"
         android:layout_marginStart="224dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/btn_ing"
         android:fontFamily="@font/poppins_medium"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="$ ADD TO LIST"
         android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="150dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/rock_eat_rock"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

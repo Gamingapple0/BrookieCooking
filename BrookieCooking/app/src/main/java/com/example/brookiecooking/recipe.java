@@ -6,8 +6,10 @@ import static com.example.brookiecooking.MainActivity.allAllergies;
 import static com.example.brookiecooking.MainActivity.allGroceryList;
 import static com.example.brookiecooking.MainActivity.navController;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -60,6 +62,7 @@ public class recipe extends Fragment {
     ImageView img, backBtn, overlay, scroll, back2;
     TextView txt, ing, time, steps;
     String [] ingList;
+    MainActivity mainActivity;
     String [] stepsList;
     Button stepBtn, ing_btn;
     boolean isImgCrop = false;
@@ -95,9 +98,16 @@ public class recipe extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+    }
 
-
-
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof MainActivity) {
+            mainActivity = (MainActivity) context;
+        } else {
+            throw new ClassCastException(context.toString() + " must implement MainActivity");
+        }
     }
 
     private String parseGroceryResponse(JSONObject response) throws JSONException {
@@ -125,7 +135,9 @@ public class recipe extends Fragment {
         scroll = binding.scroll;
 
         if (getArguments() != null){
-//            Glide.with(requireContext()).load(getArguments().getString("img")).into(img);
+            Glide.with(requireContext()).load(getArguments().getString("img")).into(img);
+            Glide.with(requireContext()).load(getArguments().getString("img"))
+                    .into(img);
             // Set recipe title
             txt.setText(getArguments().getString("tittle"));
             String a = getArguments().getString("tittle");
@@ -231,7 +243,9 @@ public class recipe extends Fragment {
                                 System.out.println("Cost: " + cost);
                             }
 
-                            Double groceryCost = Double.valueOf(cost);
+                            // Extract the numeric part of the cost string
+                            String numericCostString = cost.substring(1); // Remove the dollar sign
+                            Double groceryCost = Double.valueOf(numericCostString);
 
                             Grocery newGrocery = new Grocery(groceryText, groceryCost);
 
@@ -307,6 +321,7 @@ public class recipe extends Fragment {
                 if (!navController.popBackStack()) {
                     requireActivity().onBackPressed();
                 }
+                mainActivity.setNavViewVisibility(true);
             }
         });
 

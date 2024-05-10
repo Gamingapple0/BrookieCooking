@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.brookiecooking.Adapter.MyAllergiesViewAdapter;
 import com.example.brookiecooking.Adapter.MyGroceryAdapter;
+import com.example.brookiecooking.Grocery;
 import com.example.brookiecooking.R;
 import com.example.brookiecooking.databinding.FragmentNotificationsBinding;
 
@@ -34,6 +35,11 @@ public class NotificationsFragment extends Fragment {
         View root = binding.getRoot();
         binding.groceryListView.setAdapter(new MyGroceryAdapter());
         binding.groceryListView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        Double aggregateCost = 0.0;
+        for (Grocery card: allGroceryList) {
+            aggregateCost += card.getTotal();
+        }
+        binding.totalCost.setText("Total: $" + aggregateCost);
 /*        final TextView textView = binding.textNotifications;
         notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);*/
         return root;

@@ -23,17 +23,30 @@ public class Recipe implements Parcelable {
     public String des;
 
     @NonNull
+    public Double getBudget() {
+        return budget;
+    }
+
+    public void setBudget(@NonNull Double budget) {
+        this.budget = budget;
+    }
+
+    @NonNull
+    public Double budget;
+
+    @NonNull
     public String ing;
 
     @NonNull
     public String category;
 
-    public Recipe(String img, String tittle, String des, String ing, String category) {
+    public Recipe(String img, String tittle, String des, String ing, String category, Double budget) {
         this.img = img;
         this.tittle = tittle;
         this.des = des;
         this.ing = ing;
         this.category = category;
+        this.budget = budget;
     }
 
     protected Recipe(Parcel in) {
@@ -111,6 +124,7 @@ public class Recipe implements Parcelable {
         dest.writeString(des);
         dest.writeString(ing);
         dest.writeString(category);
+        dest.writeDouble(budget);
     }
 
 }

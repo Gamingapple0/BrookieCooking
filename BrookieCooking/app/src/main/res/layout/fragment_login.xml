@@ -6,6 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".login">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="258dp"
+        android:layout_height="157dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="560dp"
+        android:elevation="5dp"
+        android:src="@drawable/text_bubble"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="111dp"
+        android:layout_height="137dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="612dp"
+        android:src="@drawable/rock_rock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -51,10 +72,11 @@
 
     <TextView
         android:id="@+id/signupButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="564dp"
+        android:layout_width="128dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="600dp"
+        android:elevation="6dp"
         android:text="Need an Account?"
         android:textColor="@color/black"
         android:textSize="25dp"
@@ -88,6 +110,16 @@
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="125dp"
+        android:layout_height="153dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/brok"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

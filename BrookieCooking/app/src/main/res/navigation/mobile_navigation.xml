@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_navigation_home_to_login"
             app:destination="@id/login" />
+        <action
+            android:id="@+id/action_navigation_home_to_profile"
+            app:destination="@id/profile" />
     </fragment>
 
     <fragment
@@ -85,5 +88,26 @@
         <action
             android:id="@+id/action_allergies_to_login"
             app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.brookiecooking.profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_profile_to_profile_recipe"
+            app:destination="@id/profile_recipe" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile_recipe"
+        android:name="com.example.brookiecooking.profile_recipe"
+        android:label="fragment_profile_recipe"
+        tools:layout="@layout/fragment_profile_recipe" >
+        <action
+            android:id="@+id/action_profile_recipe_to_profile"
+            app:destination="@id/profile" />
     </fragment>
 </navigation>

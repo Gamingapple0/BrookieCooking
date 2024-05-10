@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     public static UserDatabase database;
     private List<User> users = new ArrayList<>();
     private UserViewModel userViewModel;
+    public static List<Recipe> recRecipes = new ArrayList<>();
     public static User currentUser;
     public static int currentUserIndex;
     public static List<Recipe> generatedRecipes = new ArrayList<>();

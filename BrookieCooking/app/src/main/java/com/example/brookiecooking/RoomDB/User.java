@@ -140,6 +140,10 @@ public class User implements Parcelable {
         this.allRecipes = allRecipes;
     }
 
+    public void addRecipe(Recipe newRec) {
+        allRecipes.add(newRec);
+    }
+
     public Integer getId() {
         return id;
     }

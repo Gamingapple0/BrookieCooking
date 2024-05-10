@@ -18,12 +18,15 @@ import com.example.brookiecooking.R;
 /*import com.example.brookiecooking.RecipeActivity;*/
 import com.example.brookiecooking.RoomDB.Recipe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterPopular extends RecyclerView.Adapter<AdapterPopular.myviewholder>{
 
     List<Recipe> data;
     Context context;
+    String [] ingList;
+
 
     public AdapterPopular(List<Recipe> data, Context context) {
         this.data = data;
@@ -42,9 +45,22 @@ public class AdapterPopular extends RecyclerView.Adapter<AdapterPopular.myviewho
         final Recipe temp = data.get(holder.getAdapterPosition());
 
         // Split the time from ingredients
-        String[] time = data.get(holder.getAdapterPosition()).getIng().split("\n");
+//        String[] time = data.get(holder.getAdapterPosition()).getIng().split("\n");
         // Set time
-        holder.txt2.setText("\uD83D\uDD50 "+time[0]);
+
+        ingList = temp.getIng().split("\n");
+
+//        holder.txt2.setText("\uD83D\uDD50 "+time[0]);
+
+        List<String> filteredList = new ArrayList<>();
+        for (String ingredient : ingList) {
+            if (!ingredient.isEmpty() && ingredient != null) {
+                filteredList.add(ingredient);
+            }
+        }
+
+
+        holder.txt2.setText(filteredList.get(1));
         // Load image from link
         Glide.with(holder.txt2.getContext()).load(data.get(holder.getAdapterPosition()).getImg()).into(holder.img);
         // Set title
@@ -61,6 +77,7 @@ public class AdapterPopular extends RecyclerView.Adapter<AdapterPopular.myviewho
             bundle.putString("tittle", temp.getTittle());
             bundle.putString("des", temp.getDes());
             bundle.putString("ing", temp.getIng());
+            bundle.putString("budget", String.valueOf(temp.budget));
             navController.navigate(R.id.recipe, bundle);
         });
 

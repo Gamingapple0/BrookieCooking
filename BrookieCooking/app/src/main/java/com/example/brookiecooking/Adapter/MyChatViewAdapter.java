@@ -45,7 +45,21 @@ public class MyChatViewAdapter extends RecyclerView.Adapter<MyChatViewAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         Chat currentChat = allChats.get(position);
+
         if (currentChat.isBot()){
+            if (currentChat.getCategory() == "Nepal"){
+                holder.botChatIcon.setImageResource(R.drawable.brok_nepal);
+            }
+            if (currentChat.getCategory() == "China"){
+                holder.botChatIcon.setImageResource(R.drawable.brok_china);
+            }
+            if (currentChat.getCategory() == "India"){
+                holder.botChatIcon.setImageResource(R.drawable.brok_india);
+            }
+            if (currentChat.getCategory() == "Italy"){
+                holder.botChatIcon.setImageResource(R.drawable.brok_italy);
+            }
+
             holder.botChatIcon.setVisibility(View.VISIBLE);
             holder.userChatIcon.setVisibility(View.GONE);
             holder.chatValue.setText(currentChat.getValue());

@@ -7,13 +7,13 @@ android:layout_height="match_parent"
 tools:context=".ui.home.HomeFragment">
 
 <ImageView
-    android:id="@+id/imageView"
+    android:id="@+id/profileButton"
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:background="@drawable/card_back_btn"
     android:layout_marginStart="20dp"
     android:layout_marginTop="15dp"
-    android:src="@drawable/menu_home"
+    android:src="@drawable/baseline_person_24"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     android:contentDescription="TODO" />
@@ -41,7 +41,7 @@ tools:context=".ui.home.HomeFragment">
     android:textColor="@color/black"
     android:textSize="28sp"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    app:layout_constraintTop_toBottomOf="@+id/profileButton" />
 
 <TextView
     android:id="@+id/textView3"
@@ -117,23 +117,22 @@ tools:context=".ui.home.HomeFragment">
         android:paddingRight="20dp">
 
         <ImageView
-            android:id="@+id/salad"
+            android:id="@+id/nepal"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="15dp"
-            android:background="@drawable/category_card_bc"
-            android:padding="4dp"
-            android:src="@drawable/category_salad" />
+
+            android:src="@drawable/nepal_flag" />
 
         <TextView
             android:layout_width="57dp"
             android:layout_height="31dp"
-            android:layout_below="@+id/salad"
-            android:layout_alignStart="@+id/salad"
-            android:layout_alignEnd="@+id/salad"
-            android:layout_alignBottom="@id/salad"
+            android:layout_below="@+id/nepal"
+            android:layout_alignStart="@+id/nepal"
+            android:layout_alignEnd="@+id/nepal"
+            android:layout_alignBottom="@id/nepal"
             android:layout_marginStart="17dp"
             android:layout_marginTop="3dp"
             android:layout_marginEnd="11dp"
@@ -144,24 +143,22 @@ tools:context=".ui.home.HomeFragment">
             android:textSize="17sp" />
 
         <ImageView
-            android:id="@+id/MainDish"
+            android:id="@+id/china"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="17dp"
             android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/salad"
-            android:background="@drawable/category_card_bc"
-            android:padding="4dp"
-            android:src="@drawable/category_main" />
+            android:layout_toEndOf="@+id/nepal"
+            android:src="@drawable/china_flag" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/salad"
-            android:layout_alignStart="@+id/MainDish"
-            android:layout_alignEnd="@+id/MainDish"
-            android:layout_alignBottom="@id/salad"
+            android:layout_below="@+id/nepal"
+            android:layout_alignStart="@+id/china"
+            android:layout_alignEnd="@+id/china"
+            android:layout_alignBottom="@id/nepal"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="-25dp"
             android:fontFamily="@font/poppins_light"
@@ -172,24 +169,22 @@ tools:context=".ui.home.HomeFragment">
 
 
         <ImageView
-            android:id="@+id/Drinks"
+            android:id="@+id/india"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="17dp"
             android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/MainDish"
-            android:background="@drawable/category_card_bc"
-            android:padding="4dp"
-            android:src="@drawable/catergory_drinks" />
+            android:layout_toEndOf="@+id/china"
+            android:src="@drawable/india_flag" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Drinks"
-            android:layout_alignStart="@+id/Drinks"
-            android:layout_alignEnd="@+id/Drinks"
-            android:layout_alignBottom="@id/salad"
+            android:layout_below="@+id/india"
+            android:layout_alignStart="@+id/india"
+            android:layout_alignEnd="@+id/india"
+            android:layout_alignBottom="@id/nepal"
             android:layout_marginStart="1dp"
             android:layout_marginTop="3dp"
             android:layout_marginEnd="-1dp"
@@ -202,24 +197,22 @@ tools:context=".ui.home.HomeFragment">
 
 
         <ImageView
-            android:id="@+id/Desserts"
+            android:id="@+id/italy"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="17dp"
             android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/Drinks"
-            android:background="@drawable/category_card_bc"
-            android:padding="4dp"
-            android:src="@drawable/category_dessert" />
+            android:layout_toEndOf="@+id/india"
+            android:src="@drawable/italy_flag" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Desserts"
-            android:layout_alignStart="@+id/Desserts"
-            android:layout_alignEnd="@+id/Desserts"
-            android:layout_alignBottom="@id/Desserts"
+            android:layout_below="@+id/italy"
+            android:layout_alignStart="@+id/italy"
+            android:layout_alignEnd="@+id/italy"
+            android:layout_alignBottom="@id/italy"
             android:layout_marginStart="1dp"
             android:layout_marginTop="3dp"
             android:layout_marginEnd="-1dp"
@@ -269,4 +262,14 @@ tools:context=".ui.home.HomeFragment">
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/popular_text"
     tools:ignore="RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="127dp"
+        android:layout_height="167dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/brok"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
