@@ -2,35 +2,25 @@ package com.example.brookiecooking.ui.home;
 
 import static com.example.brookiecooking.MainActivity.allAllergies;
 import static com.example.brookiecooking.MainActivity.currentUser;
-import static com.example.brookiecooking.MainActivity.currentUserIndex;
-import static com.example.brookiecooking.MainActivity.database;
 import static com.example.brookiecooking.MainActivity.navController;
 import static com.example.brookiecooking.MainActivity.recRecipes;
 import static com.example.brookiecooking.category.parseIngredientsResponse;
 import static com.example.brookiecooking.category.parseInstructionsResponse;
 
-import static java.lang.Math.random;
-
 import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.airbnb.lottie.LottieDrawable;
@@ -41,11 +31,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.brookiecooking.Adapter.AdapterPopular;
-import com.example.brookiecooking.Chat;
 import com.example.brookiecooking.R;
-import com.example.brookiecooking.RoomDB.AppDatabase;
 import com.example.brookiecooking.RoomDB.Recipe;
-import com.example.brookiecooking.RoomDB.RecipeDao;
 import com.example.brookiecooking.databinding.FragmentHomeBinding;
 
 import org.json.JSONException;
@@ -61,7 +48,7 @@ import java.util.Random;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    ImageView salad, main, drinks, dessert, menu;
+    ImageView nepal, china, india, italy, menu;
     RecyclerView rcview_home;
     List<Recipe> dataPopular = new ArrayList<>();
     LottieAnimationView lottie;
@@ -81,10 +68,10 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        salad = binding.nepal;
-        main = binding.china;
-        drinks = binding.india;
-        dessert = binding.italy;
+        nepal = binding.nepal;
+        china = binding.china;
+        india = binding.india;
+        italy = binding.italy;
         rcview_home = binding.rcviewPopular;
         lottie = binding.lottie;
         lottie.setRepeatCount(LottieDrawable.INFINITE);
@@ -95,10 +82,10 @@ public class HomeFragment extends Fragment {
 
         setPopularList();
 
-        salad.setOnClickListener(v -> start("Salad","Nepal"));
-        main.setOnClickListener(v -> start("Dish", "China"));
-        drinks.setOnClickListener(v -> start("Drinks", "India"));
-        dessert.setOnClickListener(v -> start("Desserts", "Italy"));
+        nepal.setOnClickListener(v -> start("Nepal","Nepal"));
+        china.setOnClickListener(v -> start("China", "China"));
+        india.setOnClickListener(v -> start("India", "India"));
+        italy.setOnClickListener(v -> start("Italy", "Italy"));
 
 
         // Menu button
@@ -108,23 +95,14 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+    // Fetch and display popular recipes
     public void setPopularList() {
 
-//        // Get database
-//        AppDatabase db = Room.databaseBuilder(getContext(),
-//                        AppDatabase.class, "db_name6").allowMainThreadQueries()
-//                /*.createFromAsset("database/recipe.db")*/
-//                .fallbackToDestructiveMigration()
-//                .build();
-//        RecipeDao recipeDao = db.userDao();
         Log.i("AshRecTest", String.valueOf(recRecipes.size()));
-//        recRecipes.add(new Recipe("","","","","",0.0));
-//        recRecipes.add(new Recipe("","","","","",0.0));
         if (recRecipes.size() < 1){
             // Get random cuisine from Recipes
             Random rand = new Random();
-//            Recipe randRec = currentUser.getAllRecipes().get(rand.nextInt(currentUser.getAllRecipes().size()));
-            Recipe randRec = currentUser.getAllRecipes().get(1);
+            Recipe randRec = currentUser.getAllRecipes().get(rand.nextInt(currentUser.getAllRecipes().size()));
             cus = randRec.category;
 
             if (Objects.equals(cus, "Nepal")){
@@ -199,14 +177,7 @@ public class HomeFragment extends Fragment {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-//                                Chat newBotChat = new Chat(parseIngredientsResponse(response),true);
-//
-//                                allChats.add(newBotChat);
-//                                adapter.notifyItemInserted(allChats.size()-1);
-
                                 Recipe newRecipe = new Recipe(newRecipeImg, newDishTitle,parseInstructionsResponse(response), parseIngredientsResponse(response), newDishTitle,budg);
-
-
 
                                 recRecipes.add(newRecipe);
                                 if (currentUser.getAllRecipes().size() > 0){
@@ -239,16 +210,6 @@ public class HomeFragment extends Fragment {
                             DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
                     Volley.newRequestQueue(getContext()).add(request);
-
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("img", newRecipeImg);
-//                    bundle.putString("tittle", binding.chatInputBox.getText().toString());
-//                    bundle.putString("budget", String.valueOf(budget));
-//                    bundle.putString("des", parseInstructionsResponse(response));
-//                    bundle.putString("ing", parseIngredientsResponse(response));
-//
-//                    Recipe newRecipe = new Recipe(newRecipeImg, binding.chatInputBox.getText().toString(),parseInstructionsResponse(response), parseIngredientsResponse(response), getArguments().getString("title"),budget);
-//                    currentUser.addRecipe(newRecipe);
 
                     Log.i("AshUserCur", String.valueOf(response));
 
@@ -284,10 +245,8 @@ public class HomeFragment extends Fragment {
 
     }
 
-    // Start MainActivity(Recipe list) with intent message
-
+    // Start category activity with specified parameters
     public void start(String p, String title){
-        // Assuming navController is initialized in your HomeActivity
         Bundle bundle = new Bundle();
         bundle.putString("Category", p);
         bundle.putString("title", title);
@@ -300,18 +259,6 @@ public class HomeFragment extends Fragment {
     private void showBottomSheet() {
 
         navController.navigate(R.id.action_navigation_home_to_profile);
-/*        Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.bottom_sheet);
-
-        LinearLayout privayPolicy = dialog.findViewById(R.id.privacy_policy);
-        LinearLayout abtDev = dialog.findViewById(R.id.about_dev);
-
-        dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-        dialog.getWindow().setGravity(Gravity.BOTTOM);*/
 
 
     }

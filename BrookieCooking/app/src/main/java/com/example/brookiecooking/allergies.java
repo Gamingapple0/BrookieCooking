@@ -99,14 +99,6 @@ public class allergies extends Fragment implements Clickable {
             password = bundle.getString("password");
             confirmPassword = bundle.getString("confirmPassword");
             phone = bundle.getString("phone");
-            // Do something with the data
-
-            Log.i("AshI", "Username: " + username);
-            Log.i("AshI", "Email: " + email);
-            Log.i("AshI", "Confirm Email: " + confirmEmail);
-            Log.i("AshI", "Password: " + password);
-            Log.i("AshI", "Confirm Password: " + confirmPassword);
-            Log.i("AshI", "Phone: " + phone);
         }
 
         recyclerView = binding.getRoot().findViewById(R.id.allAlergiesView);

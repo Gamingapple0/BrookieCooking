@@ -63,22 +63,12 @@ public class MyChatViewAdapter extends RecyclerView.Adapter<MyChatViewAdapter.Vi
             holder.botChatIcon.setVisibility(View.VISIBLE);
             holder.userChatIcon.setVisibility(View.GONE);
             holder.chatValue.setText(currentChat.getValue());
-            /*RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.senderIconCardID.getLayoutParams();
-            layoutParams.leftMargin = (int) (283 * holder.itemView.getContext().getResources().getDisplayMetrics().density);*/
-            /*holder.senderIconCardID.setLayoutParams(layoutParams);*/
+
         }
         else{
             holder.botChatIcon.setVisibility(View.GONE);
             holder.userChatIcon.setVisibility(View.VISIBLE);
             holder.chatValue.setText(currentChat.getValue());
-/*                RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.charCardID.getLayoutParams();
-                layoutParams.leftMargin = (int) (127 * holder.itemView.getContext().getResources().getDisplayMetrics().density);
-                holder.charCardID.setLayoutParams(layoutParams);*/
-
-//                FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) holder.charCardID.getLayoutParams();
-//                layoutParams1.gravity = Gravity.END;
-//                holder.charCardID.setLayoutParams(layoutParams1);
-
         }
 
 

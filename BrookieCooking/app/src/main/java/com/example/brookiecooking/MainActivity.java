@@ -36,11 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private UserViewModel userViewModel;
     public static List<Recipe> recRecipes = new ArrayList<>();
     public static User currentUser;
-    public static int currentUserIndex;
-    public static List<Recipe> generatedRecipes = new ArrayList<>();
     public static List<Chat> allChats = new ArrayList<Chat>();
     public static List<Grocery> allGroceryList = new ArrayList<>();
-    public static boolean displayChatValue = false;
     public static List<String> allAllergies = new ArrayList<String>() {{
         add("Peanut");
         add("Gluten");
@@ -73,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-/*        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);*/
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         database = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, "userDB")
@@ -81,38 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         userViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(UserViewModel.class);
-
-        String groceryText = "Sure, here is the grocery list for the Momo recipe with a total cost of less than $50:\n" +
-                "                                                                                                    \n" +
-                "                                                                                                    * Rice flour (1 cup) - $1.50\n" +
-                "                                                                                                    * Water (1/2 cup) - $0.00 (since it's a free resource)\n" +
-                "                                                                                                    * Vegetable oil (1/4 cup) - $2.00\n" +
-                "                                                                                                    * Onion (1/4 cup, chopped) - $0.75\n" +
-                "                                                                                                    * Cabbage (1/4 cup, chopped) - $0.75\n" +
-                "                                                                                                    * Carrots (1/4 cup, chopped) - $0.75\n" +
-                "                                                                                                    * Spinach (1/4 cup, chopped) - $0.75\n" +
-                "                                                                                                    * Herbs (1/4 cup, chopped) - $0.75\n" +
-                "                                                                                                    * Salt - $0.25\n" +
-                "                                                                                                    * Pepper - $0.25\n" +
-                "                                                                                                    \n" +
-                "                                                                                                    Total cost: $50.00\n" +
-                "                                                                                                    \n" +
-                "                                                                                                    Note: The cost of the ingredients may vary depending on the location and availability of the items. These prices are just an estimate.";
-        Pattern pattern = Pattern.compile("\\$[0-9]+\\.?[0-9]*");
-        Matcher matcher = pattern.matcher(groceryText);
-
-        String cost = "0";
-        while (matcher.find()) {
-            cost = matcher.group(); // Extract the cost substring
-            System.out.println("Cost: " + cost);
-        }
-
-        String numericCostString = cost.substring(1); // Remove the dollar sign
-        Double groceryCost = Double.valueOf(numericCostString);
-        Grocery newGrocery = new Grocery(groceryText, groceryCost);
-
-//        allGroceryList.add(newGrocery);
-
         userViewModel.getUsers().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> userList) {

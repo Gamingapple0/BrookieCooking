@@ -81,9 +81,11 @@ public class profile extends Fragment {
 
         binding = FragmentProfileBinding.inflate(inflater,container,false);
 
+        // Set user details
         binding.username.setText(currentUser.getUsername());
         binding.email.setText(currentUser.getEmail());
 
+        // Set click listeners for different categories
         binding.listrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,7 +123,7 @@ public class profile extends Fragment {
             }
         });
 
-
+        // Handle back button click
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

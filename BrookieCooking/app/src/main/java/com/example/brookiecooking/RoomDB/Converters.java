@@ -22,8 +22,8 @@ public class Converters {
     }
 
     @TypeConverter
-    public static Long calendarToTimestamp(Calendar calender){
-        return calender.getTimeInMillis();
+    public static Long calendarToTimestamp(Calendar calendar){
+        return calendar.getTimeInMillis();
     }
 
     @TypeConverter

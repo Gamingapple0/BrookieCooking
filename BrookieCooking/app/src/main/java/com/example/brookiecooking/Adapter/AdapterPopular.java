@@ -46,12 +46,9 @@ public class AdapterPopular extends RecyclerView.Adapter<AdapterPopular.myviewho
         final Recipe temp = data.get(holder.getAdapterPosition());
 
         // Split the time from ingredients
-//        String[] time = data.get(holder.getAdapterPosition()).getIng().split("\n");
         // Set time
 
         ingList = temp.getIng().split("\n");
-
-//        holder.txt2.setText("\uD83D\uDD50 "+time[0]);
 
         List<String> filteredList = new ArrayList<>();
         for (String ingredient : ingList) {
@@ -63,7 +60,6 @@ public class AdapterPopular extends RecyclerView.Adapter<AdapterPopular.myviewho
 
         holder.txt2.setText(filteredList.get(1));
         // Load image from link
-//        Glide.with(holder.txt2.getContext()).load().into(holder.img);
         String im = data.get(holder.getAdapterPosition()).getImg();
         if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(11).png")){
             holder.img.setImageResource(R.drawable.india_recipe);

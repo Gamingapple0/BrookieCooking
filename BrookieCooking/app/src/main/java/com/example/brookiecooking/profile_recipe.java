@@ -96,34 +96,15 @@ public class profile_recipe extends Fragment {
         String cuisine = getArguments().getString("Category");
         switch (Objects.requireNonNull(cuisine)) {
             case "Nepal":
-                currentList = currentUser.getAllRecipes()
-                        .stream()
-                        .filter(x -> "Nepal".equals(x.getCategory()))
-                        .collect(Collectors.toList());
-                break;
             case "China":
-                currentList = currentUser.getAllRecipes()
-                        .stream()
-                        .filter(x -> "China".equals(x.getCategory()))
-                        .collect(Collectors.toList());
-                break;
             case "India":
-                currentList = currentUser.getAllRecipes()
-                        .stream()
-                        .filter(x -> "India".equals(x.getCategory()))
-                        .collect(Collectors.toList());
-                break;
             case "Italy":
-                currentList = currentUser.getAllRecipes()
-                        .stream()
-                        .filter(x -> "Italy".equals(x.getCategory()))
-                        .collect(Collectors.toList());
+                currentList = filterRecipesByCategory(cuisine);
                 break;
             default:
                 currentList = new ArrayList<>();
         }
 
-        Log.i("AshCurrentList", currentList.toString());
         binding.recview.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         adapter = new Adaptar(currentList,requireContext());
@@ -131,6 +112,7 @@ public class profile_recipe extends Fragment {
 
         binding.tittle.setText(cuisine);
 
+        // Handle back button click
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,6 +123,24 @@ public class profile_recipe extends Fragment {
             }
         });
 
+
+
         return binding.getRoot();
+    }
+
+    // Method to filter recipes by category
+    private List<Recipe> filterRecipesByCategory(String category) {
+        return currentUser.getAllRecipes()
+                .stream()
+                .filter(recipe -> category.equals(recipe.getCategory()))
+                .collect(Collectors.toList());
+    }
+
+    // Method to handle back button click
+    private void handleBackButtonClick() {
+        mainActivity.setNavViewVisibility(true);
+        if (!MainActivity.navController.popBackStack()) {
+            requireActivity().onBackPressed();
+        }
     }
 }

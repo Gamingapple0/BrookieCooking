@@ -94,14 +94,6 @@ public class MyAllergiesViewAdapter extends RecyclerView.Adapter<MyAllergiesView
         @SuppressLint("ResourceAsColor")
         public void bindCard(String allergy) {
 
-//            if (background instanceof GradientDrawable) {
-//                binding.editInterest.setBackgroundResource(R.drawable.ic_launcher_background);
-//            } else {
-//                binding.editInterest.setBackgroundResource(R.drawable.gradient_with_stroke);
-//            }
-
-//            binding.editInterest.setBackgroundResource(R.drawable.ic_launcher_background);
-
             binding.editInterest.setText(allergy);
 
             binding.editInterest.setOnClickListener(new View.OnClickListener() {

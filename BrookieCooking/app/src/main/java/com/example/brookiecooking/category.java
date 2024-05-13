@@ -211,11 +211,6 @@ public class category extends Fragment {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-//                                Chat newBotChat = new Chat(parseIngredientsResponse(response),true);
-//
-//                                allChats.add(newBotChat);
-//                                adapter.notifyItemInserted(allChats.size()-1);
-
                                 Bundle bundle = new Bundle();
                                 bundle.putString("img", newRecipeImg);
                                 bundle.putString("tittle", binding.chatInputBox.getText().toString());
@@ -247,10 +242,6 @@ public class category extends Fragment {
                                 }.execute();
 
 
-
-
-
-
                             } catch (JSONException e) {
                                 throw new RuntimeException(e);
                             }
@@ -276,9 +267,6 @@ public class category extends Fragment {
                 }
                 else{
                     budget = Double.valueOf(binding.chatInputBox.getText().toString());
-/*                    Chat newChat1 = new Chat(binding.chatInputBox.getText().toString(),false);
-                    allChats.add(newChat1);*/
-
                     Chat newChat1 = new Chat("Understood! What dish would you like the recipe of?",true, getArguments().getString("title"));
                     allChats.add(newChat1);
                     adapter.notifyItemInserted(allChats.size()-1);
@@ -291,32 +279,6 @@ public class category extends Fragment {
         // Set recipe category title
         assert getArguments() != null;
         tittle.setText(getArguments().getString("title"));
-
-
-
-
-
-        // Get database
-        /*AppDatabase db = Room.databaseBuilder(requireContext(),
-                        AppDatabase.class, "db_name3").allowMainThreadQueries()
-                .createFromAsset("database/recipe.db")
-                .build();*/
-/*        UserDao userDao = db.userDao();
-
-        // Get all recipes from database
-        List<User> recipes = userDao.getAll();
-
-        // Filter category from recipes
-        for(int i = 0; i<recipes.size(); i++){
-            if(recipes.get(i).getCategory().contains(getArguments().getString("Category"))){
-                dataFinal.add(recipes.get(i));
-            }
-        }
-
-        // Set category list to adapter
-        Adaptar adapter = new Adaptar(dataFinal, requireContext());
-        recview.setAdapter(adapter)*/;
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
