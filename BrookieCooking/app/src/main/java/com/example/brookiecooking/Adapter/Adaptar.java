@@ -24,6 +24,7 @@ import com.example.brookiecooking.RoomDB.Recipe;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Adaptar extends  RecyclerView.Adapter<Adaptar.myviewHolder>{
 
@@ -60,7 +61,27 @@ public class Adaptar extends  RecyclerView.Adapter<Adaptar.myviewHolder>{
         final Recipe temp = data.get(position);
 
         holder.txt1.setText(data.get(position).getTittle());
-        Glide.with(holder.txt1.getContext()).load(data.get(position).getImg()).into(holder.img);
+        String im = data.get(position).getImg();
+
+
+
+//        Glide.with(holder.txt1.getContext()).load(im).into(holder.img);
+
+        if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(11).png")){
+            holder.img.setImageResource(R.drawable.india_recipe);
+        }
+
+        if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(10).png")){
+            holder.img.setImageResource(R.drawable.china_recipe);
+        }
+
+        if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(12).png")){
+            holder.img.setImageResource(R.drawable.italy_recipe);
+        }
+
+        if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(9).png")){
+            holder.img.setImageResource(R.drawable.nepal_recipe);
+        }
 
         ingList = temp.getIng().split("\n");
 
@@ -113,7 +134,7 @@ public class Adaptar extends  RecyclerView.Adapter<Adaptar.myviewHolder>{
 
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.imgNepal);
+            img = itemView.findViewById(R.id.imgCountry);
             img2 = itemView.findViewById(R.id.card_btn);
             txt1 = itemView.findViewById(R.id.txt1);
             time = itemView.findViewById(R.id.time);

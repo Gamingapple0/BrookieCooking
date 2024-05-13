@@ -24,7 +24,7 @@
 
         <ImageView
 
-            android:id="@+id/imgNepal"
+            android:id="@+id/imgCountry"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_gravity="center"

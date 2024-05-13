@@ -117,11 +117,14 @@ public class HomeFragment extends Fragment {
 //                .fallbackToDestructiveMigration()
 //                .build();
 //        RecipeDao recipeDao = db.userDao();
-
+        Log.i("AshRecTest", String.valueOf(recRecipes.size()));
+//        recRecipes.add(new Recipe("","","","","",0.0));
+//        recRecipes.add(new Recipe("","","","","",0.0));
         if (recRecipes.size() < 1){
             // Get random cuisine from Recipes
             Random rand = new Random();
-            Recipe randRec = currentUser.getAllRecipes().get(rand.nextInt(currentUser.getAllRecipes().size()));
+//            Recipe randRec = currentUser.getAllRecipes().get(rand.nextInt(currentUser.getAllRecipes().size()));
+            Recipe randRec = currentUser.getAllRecipes().get(1);
             cus = randRec.category;
 
             if (Objects.equals(cus, "Nepal")){
@@ -207,7 +210,7 @@ public class HomeFragment extends Fragment {
 
                                 recRecipes.add(newRecipe);
                                 if (currentUser.getAllRecipes().size() > 0){
-                                    recRecipes.add(currentUser.getAllRecipes().get(0));
+                                    recRecipes.add(currentUser.getAllRecipes().get(1));
                                 }
 
                                 AdapterPopular adapter = new AdapterPopular(recRecipes, getContext());
@@ -271,6 +274,11 @@ public class HomeFragment extends Fragment {
 
             // Hide progress animation
 
+        }
+        else{
+            AdapterPopular adapter = new AdapterPopular(recRecipes, getContext());
+            rcview_home.setAdapter(adapter);
+            lottie.setVisibility(View.GONE);
         }
 
 

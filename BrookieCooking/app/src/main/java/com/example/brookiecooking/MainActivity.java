@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         Double groceryCost = Double.valueOf(numericCostString);
         Grocery newGrocery = new Grocery(groceryText, groceryCost);
 
-        allGroceryList.add(newGrocery);
+//        allGroceryList.add(newGrocery);
 
         userViewModel.getUsers().observe(this, new Observer<List<User>>() {
             @Override

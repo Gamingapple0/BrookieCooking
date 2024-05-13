@@ -39,6 +39,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -135,9 +136,28 @@ public class recipe extends Fragment {
         scroll = binding.scroll;
 
         if (getArguments() != null){
-            Glide.with(requireContext()).load(getArguments().getString("img")).into(img);
-            Glide.with(requireContext()).load(getArguments().getString("img"))
-                    .into(img);
+            String im = getArguments().getString("img");
+//            Glide.with(requireContext()).load(im).into(img);
+
+
+
+            if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(11).png")){
+                img.setImageResource(R.drawable.india_recipe);
+            }
+
+//            {"budget":100.0,"category":"Nepal","des":" Sure, here are the instructions for making delicious Momos in the cuisine of Nepal within the budget of $100 and without any peanut, gluten, egg, dairy, or soy ingredients:\n\n1. In a large mixing bowl, combine 1 cup of rice flour (or a combination of rice and wheat flour for a more complex flavor) and 1/2 cup of water (or adjust the amount of water based on the humidity level in your area). Mix until a dough forms.\n2. Knead the dough for 5-7 minutes until it becomes smooth and pliable.\n3. Divide the dough into small balls, about the size of a small egg.\n4. Roll out each ball of dough into a thin circle, about 3-4 inches in diameter.\n5. Place a tablespoon of chopped onion (or a combination of onion and garlic for added flavor) in the center of each circle.\n6. Fold the dough over the filling and press the edges together to seal the momo.\n7. Heat a large skillet or steamer basket over medium heat and cook the momos for 5-7 minutes on each side, until they are golden brown and crispy.\n8. Serve the momos hot with your favorite dipping sauce, such as a simple mixture of soy sauce, vinegar, and chili flakes.\n\nClosing line: \"Momos are a delicious and versatile dish that can be customized to suit your taste preferences. Experiment with different combinations of ingredients to create your perfect momo!\"","img":"https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(9).png","ing":" Sure, here\u0027s a recipe for delicious Momos in the cuisine of Nepal within the budget of $100 and without any peanut, gluten, egg, dairy, or soy ingredients:\n\n5 min\n\n* 1 cup rice flour (, or try using a combination of rice and wheat flour for a more complex flavor)\n* 1/2 cup water (, or adjust the amount of water based on the humidity level in your area)\n* 1/4 cup vegetable oil (, or use ghee for a more traditional Nepali flavor)\n* 1/4 cup chopped onion (, or use a combination of onion and garlic for added flavor)\n* 1/4 cup chopped cabbage (, or use a combination of cabbage and carrots for added crunch)\n* 1/4 cup chopped carrots (, or use a combination of cabbage and carrots for added crunch)\n* 1/4 cup chopped spinach (, or use a combination of spinach and herbs for added flavor)\n* 1/4 cup chopped herbs (, or use a combination of herbs such as cilantro, mint, and basil for added flavor)\n* Salt and pepper to taste (, or use a blend of spices such as cumin, coriander, and turmeric for added depth of flavor)\n\nClosing line: \"Momos are a delicious and versatile dish that can be customized to suit your taste preferences. Experiment with different combinations of ingredients to create your perfect momo!\"","tittle":"momo","uid":0},
+
+            if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(10).png")){
+                img.setImageResource(R.drawable.china_recipe);
+            }
+
+            if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(12).png")){
+                img.setImageResource(R.drawable.italy_recipe);
+            }
+
+            if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(9).png")){
+                img.setImageResource(R.drawable.nepal_recipe);
+            }
             // Set recipe title
             txt.setText(getArguments().getString("tittle"));
             String a = getArguments().getString("tittle");

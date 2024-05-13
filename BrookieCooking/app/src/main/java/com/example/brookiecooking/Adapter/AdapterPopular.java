@@ -20,6 +20,7 @@ import com.example.brookiecooking.RoomDB.Recipe;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AdapterPopular extends RecyclerView.Adapter<AdapterPopular.myviewholder>{
 
@@ -62,7 +63,24 @@ public class AdapterPopular extends RecyclerView.Adapter<AdapterPopular.myviewho
 
         holder.txt2.setText(filteredList.get(1));
         // Load image from link
-        Glide.with(holder.txt2.getContext()).load(data.get(holder.getAdapterPosition()).getImg()).into(holder.img);
+//        Glide.with(holder.txt2.getContext()).load().into(holder.img);
+        String im = data.get(holder.getAdapterPosition()).getImg();
+        if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(11).png")){
+            holder.img.setImageResource(R.drawable.india_recipe);
+        }
+
+        if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(10).png")){
+            holder.img.setImageResource(R.drawable.china_recipe);
+        }
+
+        if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(12).png")){
+            holder.img.setImageResource(R.drawable.italy_recipe);
+        }
+
+        if (Objects.equals(im, "https://raw.githubusercontent.com/Gamingapple0/assets/main/Designer%20(9).png")){
+            holder.img.setImageResource(R.drawable.nepal_recipe);
+        }
+
         // Set title
         holder.txt.setText(data.get(holder.getAdapterPosition()).getTittle());
 

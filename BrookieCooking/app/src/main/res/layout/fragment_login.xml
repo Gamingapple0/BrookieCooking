@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="258dp"
-        android:layout_height="157dp"
+        android:layout_width="254dp"
+        android:layout_height="171dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="560dp"
         android:elevation="5dp"
@@ -72,8 +72,8 @@
 
     <TextView
         android:id="@+id/signupButton"
-        android:layout_width="128dp"
-        android:layout_height="55dp"
+        android:layout_width="127dp"
+        android:layout_height="68dp"
         android:layout_marginStart="160dp"
         android:layout_marginTop="600dp"
         android:elevation="6dp"
